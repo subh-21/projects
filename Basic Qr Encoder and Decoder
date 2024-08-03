@@ -1,0 +1,16 @@
+import qrcode
+import cv2
+
+# Encode part
+QR = qrcode.make('subhajit212002@gmail.com')
+QR.save('quick_response.jpg')
+
+# Decode part
+qr = cv2.imread('quick_response.jpg')
+dect = cv2.QRCodeDetector()
+data, points, _ = dect.detectAndDecode(qr)
+
+if data:
+    print(f'Decoded data: {data}')
+else:
+    print('QR code not detected')
